@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Путь к файлу с cookies
+COOKIES_PATH="cookies.txt"
+
+# Путь к файлу со списком URL
+URLS_FILE="urls"
+
+# Чтение каждой строки из файла URLS_FILE и скачивание с использованием aria2
+while IFS= read -r url; do
+    aria2c --load-cookies=$COOKIES_PATH "$url"
+done < "$URLS_FILE"
